@@ -1,0 +1,41 @@
+Category,Course,Product Name,SUM of Spend,SUM of Website purchases,Unique Email Purchases,Tier (old),ROAS (web purchases),ROAS (unique email purchases),Shift in ROAS,12.18 Proposed Changes,Tiers (12.18),,,,,
+Leadership & Strategy,Team Leadership,MC Certificates - Team Leadership,$902.3,9,8,Tier 1 - high confidence,298%,265%,-33%,Tier 1 - high confidence,Tier 1 - high confidence,"$2,391.0",,,,
+Finance,Investment Analysis,MC Certificates - Investment Analysis,"$1,296.2",14,10,Tier 1 - high confidence,323%,231%,-92%,Tier 1 - high confidence,Tier 1 - high confidence,"$2,994.3",,,,Leadership & Strategy
+Digital Transformation,AI,MC Certificates - Artificial Intelligence,"$10,366.0",74,70,Tier 1 - high confidence,213%,202%,-12%,Tier 1 - high confidence,Tier 1 - high confidence,"$20,939.2",,,,Finance
+Leadership & Strategy,Negotiation & Influence,MC Certificates - Negotiation & Influence,$606.7,7,4,Tier 1 - high confidence,345%,197%,-148%,Tier 1 - high confidence,Tier 1 - high confidence,"$1,195.2",,,,Technology
+Marketing & Sales,Strategic Sales,MC Certificates - Strategic Sales,$968.7,9,6,Tier 1 - high confidence,278%,185%,-93%,Tier 1 - high confidence,Tier 1 - high confidence,"$1,792.0",,,,Marketing & Sales
+Leadership & Strategy,Strategic Leadership,MC Certificates - Strategic Leadership,"$1,637.4",6,10,"Tier 2 - efficient, but need to validate scale",110%,183%,73%,Shift to Tier 1,Tier 1 - high confidence,"$2,996.4",,,,Data Science & Analytics
+Marketing & Sales,Sales Leadership,MC Certificates - Sales Leadership,"$3,560.8",18,21,Tier 1 - high confidence,151%,176%,25%,Tier 1 - high confidence,Tier 1 - high confidence,"$6,266.9",,,,Entrepreneurship & Innovation
+Leadership & Strategy,Strategic Planning,MC Certificates - Strategic Planning,"$1,195.0",10,7,Tier 1 - high confidence,250%,175%,-75%,Tier 1 - high confidence,Tier 1 - high confidence,"$2,091.2",,,,Product & Design
+Finance,Budgeting & Planning,MC Certificates - Budgeting & Planning,"$1,258.8",2,7,Tier 4 - needs work,48%,166%,119%,Shift to Tier 1.1,Tier 1 - high confidence,"$2,089.6",,,,
+Finance,Corporate Finance,MC Certificates - Corporate Finance,"$8,820.1",44,48,Tier 1 - high confidence,149%,163%,14%,Tier 1 - high confidence,Tier 1 - high confidence,"$14,376.7",,,,
+Digital Transformation,Emerging Technologies,MC Certificates - Emerging Technologies,"$1,117.5",8,5,Tier 1 - high confidence,214%,134%,-80%,Tier 1 - high confidence,Tier 1 - high confidence,"$1,497.4",,,,
+Data Science & Analytics,Data Analysis & Decision Making,MC Certificates - Data Analysis,"$3,893.8",20,16,Tier 1 - high confidence,154%,123%,-31%,Tier 1 - high confidence,Tier 1 - high confidence,"$4,789.3",,,,
+Entrepreneurship & Innovation,Growth Strategy,MC Certificates - Growth Strategy,"$1,218.1",9,5,Tier 1 - high confidence,221%,123%,-98%,Tier 1 - high confidence,Tier 1 - high confidence,"$1,498.3",,,,
+Data Science & Analytics,Data Visualization / Storytelling with Data,MC Certificates - Storytelling with Data,"$5,265.6",18,23,Tier 4 - needs work,102%,131%,28%,Shift to Tier 2,"Tier 2 - efficient, but need to validate scale",,,,,
+Entrepreneurship & Innovation,Entrepreneurship,MC Certificates - Entrepreneurship,"$3,357.9",11,13,"Tier 3 - scale, but need to improve efficiency",98%,116%,18%,Shift to Tier 2,"Tier 2 - efficient, but need to validate scale",,,,,
+Project Management,Project Management,MC Certificates - Project Management,"$4,570.7",16,17,"Tier 3 - scale, but need to improve efficiency",105%,111%,7%,Shift to Tier 2,"Tier 2 - efficient, but need to validate scale",,,,,
+Leadership & Strategy,Storytelling in Business,MC Certificates - Storytelling in Business,"$1,476.6",2,5,Tier 4 - needs work,40%,101%,61%,Shift to Tier 2,"Tier 2 - efficient, but need to validate scale",,,,,
+Project Management,Project Mgmt Leadership,MC Certificates - Project Mgmt Leadership,"$1,492.9",3,5,Tier 4 - needs work,60%,100%,40%,Shift to Tier 2,"Tier 2 - efficient, but need to validate scale",,,,,
+Product & Design,Product Marketing,MC Certificates - Product Marketing,"$1,288.0",6,4,Tier 1 - high confidence,139%,93%,-46%,Shift to Tier 3,"Tier 3 - scale, but need to improve efficiency",,,,,
+Product & Design,Product Management,MC Certificates - Product Management,"$1,420.9",8,3,Tier 1 - high confidence,168%,63%,-105%,Shift to Tier 3,"Tier 3 - scale, but need to improve efficiency",,,,,
+Marketing & Sales,Marketing Fundamentals,MC Certificates - Marketing Foundations,$298.8,0,1,Tier 4 - needs work,0%,100%,100%,Tier 4 - needs work,Tier 4 - needs work,,,,,
+Leadership & Strategy,Crisis Management,MC Certificates - Crisis Management,"$1,661.5",4,5,Tier 4 - needs work,72%,90%,18%,Tier 4 - needs work,Tier 4 - needs work,,,,,
+Data Science & Analytics,Statistics for Leaders,MC Certificates - Statistics for Leaders,"$2,369.3",10,7,"Tier 2 - efficient, but need to validate scale",126%,88%,-38%,Shift to Tier 4,Tier 4 - needs work,,,,,
+Marketing & Sales,Brand Management,MC Certificates - Brand Marketing,$706.5,3,2,"Tier 2 - efficient, but need to validate scale",127%,85%,-42%,Shift to Tier 4,Tier 4 - needs work,,,,,
+Leadership & Strategy,Leadership Fundamentals,MC Certificates - Leadership,"$2,024.8",3,5,Tier 4 - needs work,44%,74%,30%,Tier 4 - needs work,Tier 4 - needs work,,,,,
+Entrepreneurship & Innovation,Creative Problem Solving / Design Thinking,MC Certificates - Design Thinking,"$7,153.3",16,15,Tier 4 - needs work,67%,63%,-4%,Tier 4 - needs work,Tier 4 - needs work,,,,,
+Data Science & Analytics,Critical Analytical Thinking,MC Certificates - Critical Analytical Thinking,"$4,779.6",20,10,"Tier 2 - efficient, but need to validate scale",125%,63%,-63%,Shift to Tier 4,Tier 4 - needs work,,,,,
+Leadership & Strategy,Influence & Power,MC Certificates - Influence & Power,"$1,533.1",6,3,"Tier 2 - efficient, but need to validate scale",117%,59%,-59%,Shift to Tier 4,Tier 4 - needs work,,,,,
+Data Science & Analytics,Data Science for Business,MC Certificates - Data Science for Business,$553.6,0,1,Tier 4 - needs work,0%,54%,54%,Tier 4 - needs work,Tier 4 - needs work,,,,,
+Leadership & Strategy,Values Based Leadership,MC Certificates - Values-based Leadership,"$9,005.8",28,16,Tier 4 - needs work,93%,53%,-40%,Tier 4 - needs work,Tier 4 - needs work,,,,,
+Digital Transformation,Digital Leadership,MC Certificates - Digital Transformation,$563.1,0,1,Tier 4 - needs work,0%,53%,53%,Tier 4 - needs work,Tier 4 - needs work,,,,,
+Marketing & Sales,Growth Marketing,MC Certificates - Growth Marketing,"$1,133.6",1,2,Tier 4 - needs work,26%,53%,26%,Tier 4 - needs work,Tier 4 - needs work,,,,,
+Digital Transformation,Cybersecurity,MC Certificates - Cybersecurity,"$3,579.6",3,6,Tier 4 - needs work,25%,50%,25%,Tier 4 - needs work,Tier 4 - needs work,,,,,
+Product & Design,Product Design,MC Certificates - Product Design,"$2,100.5",3,3,Tier 4 - needs work,43%,43%,0%,Tier 4 - needs work,Tier 4 - needs work,,,,,
+Data Science & Analytics,Data Science Foundations,MC Certificates - Data Science Foundations,"$1,560.9",1,2,Tier 4 - needs work,19%,38%,19%,Tier 4 - needs work,Tier 4 - needs work,,,,,
+Entrepreneurship & Innovation,Innovation Management,MC Certificates - Innovation Management,$977.6,4,1,"Tier 2 - efficient, but need to validate scale",122%,31%,-92%,Shift to Tier 4,Tier 4 - needs work,,,,,
+Marketing & Sales,Strategic Marketing,MC Certificates - Strategic Marketing,$987.2,1,1,Tier 4 - needs work,30%,30%,0%,Tier 4 - needs work,Tier 4 - needs work,,,,,
+Digital Transformation,Digital Transformation,MC Certificates - Digital Transformation,"$1,047.8",3,1,Tier 4 - needs work,86%,29%,-57%,Tier 4 - needs work,Tier 4 - needs work,,,,,
+Project Management,Technical Program Mgmt,MC Certificates - Technical Program Mgmt,$23.2,0,1,Tier 4 - needs work,0%,1291%,1291%,Tier 4 - needs work,Tier 4 - needs work,,,,,
+Leadership & Strategy,Complex Decision Making,MC Certificates - Complex Decision Making,"$1,515.3",2,1,Tier 4 - needs work,39%,20%,-20%,Tier 4 - needs work,Tier 4 - needs work,,,,,

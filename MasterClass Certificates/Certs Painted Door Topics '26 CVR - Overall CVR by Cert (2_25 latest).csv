@@ -1,0 +1,38 @@
+,,,,Interest,Interest,Intent to Buy,Intent to Buy,,,,,,,,,,,,,,,,
+Name,Landing Page Viewed,Sign Up Now Clicked,Paid Spend,Cost per View,Sign Up / page view,Pay Entry / Sign Up,Purchase / Payment Entry,ROAS,Tier,Tier Rationale,Notes,Payment Entry Viewed,Purchase,Blended CP-SignUp Click,Blended CP-Account Created,Blended CP-Purchase,,,,,,,
+	AI for Sales,1278,547,"$4,562",$3.6,42.80%,53.38%,14.04%,269%,1,Strong Yes,,292,41,$8,$16,$111,,,,,,,
+	AI for Marketing and Growth,1019,411,"$3,303",$3.2,40.33%,59.12%,9.88%,217%,1,Strong Yes,,243,24,$8,$14,$138,,,,,,,
+	AI for Finance,1805,566,"$4,622",$2.6,31.36%,54.24%,10.42%,207%,1,Strong Yes,,307,32,$8,$15,$144,,,,,,,
+	Managerial Accounting,2516,621,"$6,874",$2.7,24.68%,53.78%,9.58%,139%,1,Strong Yes,Scaled with efficiency,334,32,$11,$21,$215,,,,,,,
+	Business Operations Strategy and Execution,891,325,"$3,096",$3.5,36.48%,56.00%,9.34%,164%,2,"Yes, Demand not quite as strong. ","Did fine in rd 1/2, not huge spend. funnel motion at each stage show strong interest and intent to buy. ",182,17,$10,$17,$182,,,,,,,
+	Creative Leadership,1517,528,"$4,492",$3.0,34.81%,51.14%,7.41%,133%,2,"Yes, Demand not quite as strong. ","Rd 1 did really well. Meta put more spend behind Creative Leadership in round 2 than BizOps, but CPAs fell. ",270,20,$9,$17,$225,,,,,,,
+	AI for Product Managers,588,246,"$2,134",$3.6,41.84%,51.63%,8.66%,154%,2,"Yes, Demand not quite as strong. ",,127,11,$9,$17,$194,,,,,,,
+	AI for Business Strategy,540,208,"$1,986",$3.7,38.52%,68.27%,9.86%,211%,2,"Yes, Demand not quite as strong. ",Got lower spend in rd 2. ,142,14,$10,$14,$142,,,,,,,
+	AI for UX Design,1839,718,"$3,542",$1.9,39.04%,43.73%,5.10%,135%,2,"Yes, Demand not quite as strong. ","High interest at ad level and interest, but not necessarily with purchase intent (low email/purchase rates). Either lower willingness to pay or more skeptical audience. ",314,16,$5,$11,$221,,,,,,,
+	Digital Marketing: Paid Growth Operating Systems,578,164,"$1,843",$3.2,28.37%,49.39%,8.64%,114%,3,"Smaller audience, but there's interest, curriculum would need work ","Cheap page views, but curriculum needs work. ",81,7,$11,$23,$263,,,,,,,
+	Go-to-Market Strategy: From Launch to Scalable Revenue,505,155,"$1,873",$3.7,30.69%,53.55%,8.43%,112%,3,"Smaller audience, but there's interest, curriculum would need work ","Interest exists, curriculum needs work. ",83,7,$12,$23,$268,,,,,,,
+	Game Theory for Strategic Decision-Makers,453,124,"$1,848",$4.1,27.37%,55.65%,10.14%,113%,3,"Smaller audience, but there's interest, curriculum would need work ","expensive interest, but those who got to page converted. ",69,7,$15,$27,$264,,,,,,,
+	Leading Through Change: From Strategy to Adoption,387,142,"$2,183",$5.6,36.69%,57.04%,7.41%,82%,4,No,,81,6,$15,$27,$364,,,,,,,
+	Hiring and Building High-Performing Teams,350,86,"$1,872",$5.3,24.57%,61.63%,9.43%,80%,4,No,N too small. ,53,5,$22,$35,$374,,,,,,,
+	Scaling Growth Strategy,293,63,"$1,889",$6.4,21.50%,53.97%,11.76%,63%,4,No,,34,4,$30,$56,$472,,,,,,,
+	Management Essentials: From Individual Contributor to Leader,445,144,"$1,857",$4.2,32.36%,62.50%,3.33%,48%,4,No,,90,3,$13,$21,$619,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+Overall Totals,Landing Page Viewed,Sign Up Now Clicked,Purchase / Sign Up,,Sign Up / page view,,Pay Entry / Sign Up,,,,,Payment Entry Viewed,Purchase,,,,,,,,,,
+Total,15004,5048,4.24%,,33.64%,,4.24%,,,,,2702,214,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,	Median Time (s),"	Viewed Checkout Step: Payment Entry Page (AI for Sales, Leading Through Change: From Strategy to Adoption, Scaling Growth Strategy, AI for Business Strategy, Management Essentials: From Individual Contributor to Leader, Hiring and Building High-Performing Teams, Go-to-Market Strategy: From Launch to Scalable Revenue, Managerial Accounting, Game Theory for Strategic Decision-Makers, Creative Leadership, Digital Marketing: Paid Growth Operating Systems, AI for Product Managers, AI for Finance, AI for Marketing and Growth, Business Operations Strategy and Execution)",	Average Time (s),	Median Time (s),"	E. Order Completed (Certificate Checkout) (≠ 09fb9992-13eb-424b-8141-2b3ded91e4ad, 3c771c3c-5866-4aaa-9b92-45f141b13904, e68a64a2-8608-4827-8a2c-7b4ef68d9a66, 926f6f8a-c50f-4c4d-afcb-7480c293a02f, (none))",	Is complete
+,,,,,,,,,,,,,,,,,,22,611,2932,47,56,
+,,,,,,,,,,,,,,,,,,21,15,48,48,1,TRUE
+,,,,,,,,,,,,,,,,,,27,115,6113,131,11,TRUE
+,,,,,,,,,,,,,,,,,,20,89,6156,45,15,TRUE
+,,,,,,,,,,,,,,,,,,22,73,73,35,10,TRUE
+,,,,,,,,,,,,,,,,,,23,85,61,31,7,TRUE
+,,,,,,,,,,,,,,,,,,23,113,192,76,8,FALSE
+,,,,,,,,,,,,,,,,,,22,96,178,60,5,FALSE
+,,,,,,,,,,,,,,,,,,21,36,599,599,2,FALSE
