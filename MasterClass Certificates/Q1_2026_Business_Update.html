@@ -6,1294 +6,911 @@
   <title>MasterClass Certificates — Q1 2026 Business Update</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0a0a0a;
-      --card: #141414;
-      --card-2: #1c1c1c;
-      --border: #2a2a2a;
-      --gold: #c9a84c;
-      --gold-dim: rgba(201, 168, 76, 0.15);
-      --white: #ffffff;
-      --gray: #888888;
-      --gray-light: #aaaaaa;
-      --green: #4caf50;
+      /* MC Certificates exact palette */
+      --sand:       #e4d5c3;
+      --sand-light: #fefaf2;
+      --sand-mid:   #d4c3ae;
+      --dark:       #0d0d0e;
+      --dark-warm:  #16140c;
+      --dark-card:  #1e1c14;
+      --lime:       #dcff00;
+      --lime-dim:   rgba(220, 255, 0, 0.12);
+      --ink:        #16140c;
+      --ink-2:      #52463a;
+      --ink-3:      #726855;
+      --ink-4:      #bfb0a1;
+      --cream-text: #fffef2;
+      --border-sand: rgba(22, 20, 12, 0.12);
+      --border-dark: rgba(255, 254, 242, 0.1);
+      --green:  #4caf50;
       --yellow: #f5c842;
-      --red: #e05252;
-      --blue: #5b8df5;
+      --blue:   #7ba7f5;
     }
 
     html, body {
       width: 100%; height: 100%;
-      background: var(--black);
-      font-family: 'Inter', sans-serif;
-      color: var(--white);
       overflow: hidden;
+      font-family: 'Inter', 'Sohne', Helvetica, Arial, sans-serif;
     }
 
-    /* ── SLIDE DECK ─────────────────────────────────────────── */
-    .deck {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-    }
+    /* ── DECK ─────────────────────────────────────────────── */
+    .deck { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
 
     .slide {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 60px 80px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.45s ease;
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: flex-start;
+      padding: 56px 80px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.4s ease;
     }
+    .slide.active { opacity: 1; pointer-events: all; }
 
-    .slide.active {
-      opacity: 1;
-      pointer-events: all;
-    }
+    /* ── THEMES ───────────────────────────────────────────── */
+    .slide.light { background: var(--sand); color: var(--ink); }
+    .slide.dark  { background: var(--dark-warm); color: var(--cream-text); }
 
-    /* ── SLIDE HEADER ──────────────────────────────────────── */
+    /* ── SLIDE HEADER ─────────────────────────────────────── */
     .slide-header {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 48px;
+      width: 100%; display: flex; align-items: center;
+      gap: 14px; margin-bottom: 44px;
     }
-
     .slide-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
+      font-size: 8px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      background: var(--lime); color: var(--ink);
+      padding: 3px 9px; border-radius: 2px;
     }
 
-    .slide-header-line {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
+    .slide-line {
+      flex: 1; height: 1px;
+      background: var(--border-sand);
     }
 
     .slide-num {
-      font-size: 10px;
-      color: var(--gray);
-      letter-spacing: 0.1em;
+      font-size: 9px; letter-spacing: 0.12em;
+      color: var(--ink-4);
     }
 
-    /* ── TYPOGRAPHY ────────────────────────────────────────── */
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: clamp(36px, 4.5vw, 64px);
-      line-height: 1.1;
+    /* ── TYPOGRAPHY ───────────────────────────────────────── */
+    .display {
+      font-family: 'Cormorant', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(42px, 5.5vw, 76px);
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    .display-lg {
+      font-family: 'Cormorant', Georgia, serif;
+      font-weight: 300;
+      font-size: clamp(56px, 8vw, 108px);
+      line-height: 0.95;
       letter-spacing: -0.02em;
     }
 
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: clamp(28px, 3.5vw, 48px);
-      line-height: 1.2;
-      letter-spacing: -0.01em;
+    .eyebrow {
+      font-size: 9px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 16px;
     }
 
-    h3 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: clamp(13px, 1.4vw, 18px);
-      letter-spacing: 0.02em;
-    }
+    .body-text { font-size: 13px; line-height: 1.75; color: var(--ink-2); }
 
-    .gold { color: var(--gold); }
-    .gray { color: var(--gray); }
-    .white { color: var(--white); }
+    .slide-content { width: 100%; }
 
-    /* ── COVER SLIDE ───────────────────────────────────────── */
+    /* ── COVER ────────────────────────────────────────────── */
     #slide-1 {
-      background: radial-gradient(ellipse at 60% 40%, #1a1308 0%, var(--black) 65%);
-      align-items: flex-start;
+      background: var(--sand);
       justify-content: flex-end;
       padding-bottom: 80px;
     }
-
-    .cover-eyebrow {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-
-    .cover-title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: clamp(44px, 6vw, 80px);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      max-width: 700px;
+    .cover-brand {
+      font-family: 'Inter', sans-serif;
       margin-bottom: 28px;
     }
-
-    .cover-sub {
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--gray);
-      letter-spacing: 0.04em;
+    .cover-brand .mc {
+      font-size: 13px; font-weight: 700;
+      color: var(--cream-text); letter-spacing: 0.02em;
     }
-
+    .cover-brand .certs {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(255,254,242,0.5);
+      margin-top: 2px;
+    }
     .cover-rule {
-      width: 60px;
-      height: 2px;
-      background: var(--gold);
+      width: 48px; height: 4px;
+      background: var(--lime);
       margin-bottom: 24px;
     }
-
-    /* ── METRIC CARDS ─────────────────────────────────────── */
-    .metric-grid {
-      display: grid;
-      gap: 16px;
-      width: 100%;
+    .cover-date {
+      font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-top: 20px;
     }
 
-    .metric-grid-3 { grid-template-columns: repeat(3, 1fr); }
-    .metric-grid-4 { grid-template-columns: repeat(4, 1fr); }
-    .metric-grid-5 { grid-template-columns: repeat(5, 1fr); }
-
-    .metric-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 28px 24px;
-      position: relative;
-      overflow: hidden;
+    /* ── METRIC CARDS (light) ─────────────────────────────── */
+    .card-light {
+      background: var(--sand-light);
+      border: 1px solid var(--border-sand);
+      border-radius: 4px;
+      padding: 24px 22px;
     }
-
-    .metric-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--gold);
-      opacity: 0;
-      transition: opacity 0.3s;
+    .card-dark {
+      background: var(--dark-card);
+      border: 1px solid var(--border-dark);
+      border-radius: 4px;
+      padding: 24px 22px;
     }
-
-    .metric-card.highlight { border-color: var(--gold); }
-    .metric-card.highlight::before { opacity: 1; }
+    .card-lime {
+      background: var(--lime);
+      border-radius: 4px;
+      padding: 24px 22px;
+    }
 
     .metric-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gray);
+      font-size: 9px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
       margin-bottom: 12px;
+      color: var(--ink-3);
     }
+    .card-lime .metric-label { color: rgba(22,20,12,0.6); }
 
-    .metric-value {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(26px, 3vw, 42px);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 8px;
+    .metric-val {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(28px, 3.2vw, 44px);
+      font-weight: 400; line-height: 1;
+      margin-bottom: 6px;
+      color: var(--ink);
     }
-
-    .metric-value.gold { color: var(--gold); }
+    .card-lime .metric-val { color: var(--ink); }
 
     .metric-sub {
-      font-size: 11px;
-      color: var(--gray);
+      font-size: 10px; line-height: 1.5;
+      color: var(--ink-3);
+    }
+    .card-lime .metric-sub { color: rgba(22,20,12,0.55); }
+
+    .metric-up {
+      font-size: 10px; font-weight: 600;
+      color: #3a6e3a; margin-top: 5px;
     }
 
-    .metric-vs {
-      font-size: 11px;
-      color: var(--green);
-      margin-top: 6px;
-    }
-
-    .metric-vs.warn { color: var(--yellow); }
-
-    /* ── HERO METRIC ──────────────────────────────────────── */
-    .hero-metric {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .hero-metric .value {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(60px, 8vw, 112px);
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-    }
-
-    .hero-metric .label {
-      font-size: 13px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-top: 12px;
-    }
+    /* ── GRID HELPERS ─────────────────────────────────────── */
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .g5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
 
     /* ── PROGRESS BAR ─────────────────────────────────────── */
-    .progress-bar-wrap {
-      width: 100%;
-      margin: 6px 0 12px;
+    .bar-track {
+      width: 100%; height: 3px;
+      border-radius: 2px; margin: 10px 0 6px;
+      background: var(--border-sand);
+    }
+    .bar-fill {
+      height: 100%; border-radius: 2px;
+      background: var(--lime);
     }
 
-    .progress-bar-track {
-      width: 100%;
-      height: 4px;
-      background: var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .progress-bar-fill {
-      height: 100%;
-      border-radius: 2px;
-      background: var(--gold);
-      transition: width 1s ease;
-    }
-
-    /* ── OKR LIST ─────────────────────────────────────────── */
+    /* ── OKR ITEMS ────────────────────────────────────────── */
     .okr-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; width: 100%;
     }
-
-    .okr-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 16px 20px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-    }
-
-    .okr-badge {
-      flex-shrink: 0;
-      width: 72px;
-      height: 22px;
+    .okr-row {
+      display: flex; align-items: flex-start;
+      gap: 12px; padding: 14px 16px;
       border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
     }
+    .dark .okr-row { background: var(--dark-card); border: 1px solid var(--border-dark); }
+    .light .okr-row { background: var(--sand-light); border: 1px solid var(--border-sand); }
 
-    .badge-done { background: rgba(76, 175, 80, 0.15); color: var(--green); border: 1px solid rgba(76,175,80,0.3); }
-    .badge-track { background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
-    .badge-progress { background: rgba(91,141,245,0.12); color: var(--blue); border: 1px solid rgba(91,141,245,0.3); }
-    .badge-tbd { background: rgba(136,136,136,0.1); color: var(--gray); border: 1px solid var(--border); }
-
-    .okr-text {
-      font-size: 12px;
-      line-height: 1.5;
-      color: var(--gray-light);
+    .badge {
+      flex-shrink: 0; height: 18px; padding: 0 8px;
+      border-radius: 2px; font-size: 8px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      display: flex; align-items: center;
     }
+    .b-done     { background: var(--lime); color: var(--ink); }
+    .b-track    { background: rgba(220,255,0,0.35); color: var(--ink); }
+    .b-progress { background: var(--border-sand); color: var(--ink-2); border: 1px solid rgba(22,20,12,0.15); }
+    .b-tbd      { background: transparent; color: var(--ink-4); border: 1px solid var(--border-sand); }
 
     .okr-text strong {
-      display: block;
-      color: var(--white);
-      font-size: 13px;
-      margin-bottom: 2px;
+      display: block; font-size: 11px; font-weight: 600;
+      margin-bottom: 2px; color: var(--ink);
     }
+    .okr-text p { font-size: 10px; line-height: 1.55; color: var(--ink-3); }
 
-    /* ── PRODUCT TABLE ────────────────────────────────────── */
-    .product-cards {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-      width: 100%;
-    }
-
+    /* ── PRODUCT CARDS ────────────────────────────────────── */
     .product-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 22px 18px;
+      padding: 20px 18px; border-radius: 4px;
+      background: var(--sand-light); border: 1px solid var(--border-sand);
     }
-
-    .product-card .name {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 18px;
+    .product-name {
+      font-size: 8px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 16px; color: var(--ink-3);
     }
-
-    .product-stat {
-      margin-bottom: 14px;
+    .product-val {
+      font-family: 'Cormorant', serif;
+      font-size: 28px; font-weight: 400; line-height: 1;
+      margin-bottom: 3px; color: var(--ink);
     }
-
-    .product-stat .val {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1;
+    .product-lbl {
+      font-size: 8px; letter-spacing: 0.15em;
+      text-transform: uppercase; margin-bottom: 12px;
+      color: var(--ink-4);
     }
-
-    .product-stat .lbl {
-      font-size: 9px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-top: 3px;
+    .roas-row {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 5px;
+      font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-3);
     }
+    .roas-strong { font-weight: 700; font-size: 10px; color: var(--ink); }
 
-    .roas-bar {
-      margin-top: 16px;
-    }
-
-    .roas-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 9px;
-      color: var(--gray);
-      margin-bottom: 5px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    .roas-val {
-      color: var(--white);
-      font-weight: 600;
-    }
-
-    /* ── INSIGHT CARDS ────────────────────────────────────── */
-    .insight-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      width: 100%;
-    }
-
-    .insight-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 28px 28px;
-    }
-
+    /* ── INSIGHT CARD ─────────────────────────────────────── */
     .insight-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 8px;
+      font-family: 'Cormorant', serif;
+      font-size: 56px; font-weight: 300; line-height: 1;
+      margin-bottom: 2px; color: var(--ink);
+      display: inline-block;
+      border-bottom: 3px solid var(--lime);
+      padding-bottom: 4px;
     }
-
     .insight-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 8px;
+      font-size: 13px; font-weight: 600; margin-bottom: 8px;
+      margin-top: 10px; color: var(--ink);
     }
 
-    .insight-body {
-      font-size: 12px;
-      color: var(--gray);
-      line-height: 1.7;
-    }
-
-    /* ── INITIATIVE LIST ──────────────────────────────────── */
-    .init-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      width: 100%;
-    }
-
+    /* ── INIT ITEM ────────────────────────────────────────── */
     .init-item {
-      display: flex;
-      gap: 16px;
-      padding: 20px 22px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      align-items: flex-start;
+      display: flex; gap: 14px; padding: 18px 20px;
+      border-radius: 4px; align-items: flex-start;
+      background: var(--sand-light); border: 1px solid var(--border-sand);
+      border-left: 3px solid var(--lime);
     }
-
-    .init-icon {
-      width: 36px;
-      height: 36px;
-      flex-shrink: 0;
-      border-radius: 50%;
-      background: var(--gold-dim);
-      border: 1px solid rgba(201,168,76,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
+    .init-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--lime); flex-shrink: 0; margin-top: 5px;
     }
+    .init-text strong { display: block; font-size: 12px; font-weight: 600; margin-bottom: 3px; color: var(--ink); }
+    .init-text p { font-size: 10px; line-height: 1.65; color: var(--ink-3); }
 
-    .init-text strong {
-      display: block;
-      font-size: 13px;
-      color: var(--white);
-      margin-bottom: 4px;
+    /* ── MISSION LAYOUT ───────────────────────────────────── */
+    .mission-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 56px; width: 100%; align-items: center;
     }
-
-    .init-text p {
-      font-size: 11px;
-      color: var(--gray);
-      line-height: 1.6;
-    }
-
-    /* ── NEXT SLIDE ───────────────────────────────────────── */
-    .next-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      width: 100%;
-    }
-
-    .next-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 24px 20px;
-    }
-
-    .next-card .quarter {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
-    }
-
-    .next-card .title {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 10px;
-      line-height: 1.3;
-    }
-
-    .next-card .body {
-      font-size: 11px;
-      color: var(--gray);
-      line-height: 1.7;
-    }
-
-    /* ── MISSION SLIDE ────────────────────────────────────── */
-    .mission-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      width: 100%;
-      align-items: center;
-    }
-
-    .mission-left h2 {
-      margin-bottom: 20px;
-    }
-
-    .mission-left p {
-      font-size: 14px;
-      color: var(--gray);
-      line-height: 1.8;
-      margin-bottom: 32px;
-    }
-
-    .mission-stats {
-      display: flex;
-      gap: 32px;
-    }
-
-    .mission-stat .v {
-      font-family: 'Playfair Display', serif;
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--gold);
-    }
-
-    .mission-stat .l {
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-top: 4px;
-    }
-
-    .mission-right {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
     .mission-kpi {
-      padding: 20px 24px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
+      padding: 18px 20px; border-radius: 4px; margin-bottom: 10px;
+      background: var(--sand-light); border: 1px solid var(--border-sand);
     }
-
-    .mission-kpi .k {
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 8px;
+    .mission-kpi-k {
+      font-size: 9px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; margin-bottom: 10px; color: var(--ink-3);
     }
-
-    .mission-kpi .row {
-      display: flex;
-      align-items: center;
+    .mission-kpi-row {
+      display: flex; align-items: baseline;
       justify-content: space-between;
     }
-
-    .mission-kpi .from {
-      font-size: 13px;
-      color: var(--gray);
+    .mission-kpi-from { font-size: 12px; color: var(--ink-3); }
+    .mission-kpi-arr { font-size: 16px; color: var(--ink-3); }
+    .mission-kpi-to {
+      font-family: 'Cormorant', serif;
+      font-size: 26px; font-weight: 400; color: var(--ink);
+    }
+    .mission-kpi-note {
+      font-size: 10px; margin-top: 7px; line-height: 1.5; color: var(--ink-3);
     }
 
-    .mission-kpi .arrow {
-      color: var(--gold);
-      font-size: 18px;
+    .mission-stat-grid {
+      display: flex; gap: 36px; margin-top: 32px;
+    }
+    .ms-v {
+      font-family: 'Cormorant', serif;
+      font-size: 40px; font-weight: 300; line-height: 1; color: var(--ink);
+    }
+    .ms-l {
+      font-size: 9px; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; margin-top: 5px; color: var(--ink-3);
     }
 
-    .mission-kpi .to {
-      font-family: 'Playfair Display', serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--white);
+    /* ── NEXT CARDS ───────────────────────────────────────── */
+    .next-card {
+      padding: 22px 20px; border-radius: 4px;
+      background: var(--sand-light); border: 1px solid var(--border-sand);
     }
+    .next-q {
+      display: inline-block;
+      font-size: 8px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; margin-bottom: 12px;
+      background: var(--lime); color: var(--ink);
+      padding: 2px 7px; border-radius: 2px;
+    }
+    .next-title { font-size: 14px; font-weight: 600; margin-bottom: 10px; line-height: 1.3; color: var(--ink); }
+    .next-body { font-size: 11px; line-height: 1.7; color: var(--ink-2); }
 
-    /* ── NAV ──────────────────────────────────────────────── */
+    /* ── DASHED DIVIDER (MC-style) ────────────────────────── */
+    .dash-line {
+      width: 100%; border: none;
+      border-top: 1px dashed;
+      margin: 14px 0;
+    }
+    .light .dash-line { border-color: var(--border-sand); }
+    .dark  .dash-line { border-color: var(--border-dark); }
+
+    /* ── BOTTOM NAV ───────────────────────────────────────── */
     .nav {
-      position: fixed;
-      bottom: 32px;
-      left: 50%;
+      position: fixed; bottom: 28px; left: 50%;
       transform: translateX(-50%);
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      z-index: 100;
+      display: flex; align-items: center; gap: 18px; z-index: 100;
     }
-
     .nav-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: rgba(20,20,20,0.8);
-      color: var(--white);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      transition: border-color 0.2s, background 0.2s;
-      backdrop-filter: blur(10px);
+      width: 36px; height: 36px; border-radius: 50%;
+      cursor: pointer; display: flex; align-items: center;
+      justify-content: center; font-size: 14px;
+      transition: all 0.2s; backdrop-filter: blur(8px);
+      border: 1px solid rgba(22,20,12,0.15);
+      background: rgba(228,213,195,0.8); color: var(--ink);
     }
+    .nav-btn:hover { background: var(--ink); color: var(--sand); }
+    .nav-btn:disabled { opacity: 0.25; cursor: default; }
 
-    .nav-btn:hover { border-color: var(--gold); background: rgba(201,168,76,0.1); }
-    .nav-btn:disabled { opacity: 0.3; cursor: default; }
-
-    .nav-dots {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
+    .nav-dots { display: flex; gap: 7px; align-items: center; }
     .nav-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--border);
-      transition: background 0.3s, transform 0.3s;
-      cursor: pointer;
+      width: 4px; height: 4px; border-radius: 50%;
+      background: rgba(22,20,12,0.2); cursor: pointer;
+      transition: all 0.3s;
     }
+    .nav-dot.active { background: var(--ink); transform: scale(1.5); }
 
-    .nav-dot.active {
-      background: var(--gold);
-      transform: scale(1.4);
-    }
-
-    /* ── SLIDE COUNTER ────────────────────────────────────── */
+    /* counter */
     .counter {
-      position: fixed;
-      top: 28px;
-      right: 40px;
-      font-size: 10px;
-      color: var(--gray);
-      letter-spacing: 0.12em;
-      z-index: 100;
+      position: fixed; top: 24px; right: 36px;
+      font-size: 9px; letter-spacing: 0.12em;
+      color: var(--ink-3); z-index: 100;
+      transition: color 0.4s;
     }
+    .counter.on-dark { color: rgba(255,254,242,0.3); }
 
-    /* ── LOGO ─────────────────────────────────────────────── */
-    .logo {
-      position: fixed;
-      top: 28px;
-      left: 40px;
-      font-family: 'Playfair Display', serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: var(--white);
-      z-index: 100;
+    /* logo bar */
+    .logo-bar {
+      position: fixed; top: 24px; left: 36px; z-index: 100;
     }
-
-    .logo span { color: var(--gold); }
-
-    /* ── UTILITY ──────────────────────────────────────────── */
-    .subtitle {
-      font-size: 13px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 40px;
+    .logo-mc {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: color 0.4s;
+      color: var(--ink);
     }
-
-    .slide-content {
-      width: 100%;
+    .logo-mc.on-dark { color: var(--cream-text); }
+    .logo-certs {
+      font-size: 7.5px; font-weight: 500;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      transition: color 0.4s;
+      color: var(--ink-3);
     }
+    .logo-certs.on-dark { color: rgba(255,254,242,0.35); }
 
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      width: 100%;
-    }
-
-    .section-title {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-
-    /* ── DIVIDER ──────────────────────────────────────────── */
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: var(--border);
-      margin: 28px 0;
-    }
-
-    /* ── WORKING LIST ─────────────────────────────────────── */
-    .working-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .working-row:last-child { border-bottom: none; }
-
-    .working-num {
-      width: 28px;
-      height: 28px;
-      flex-shrink: 0;
-      border-radius: 50%;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      font-size: 11px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .working-body strong {
-      display: block;
-      font-size: 13px;
-      color: var(--white);
-      margin-bottom: 3px;
-    }
-
-    .working-body p {
-      font-size: 11px;
-      color: var(--gray);
-      line-height: 1.6;
+    /* ── LIME HIGHLIGHT ──────────────────────────────────── */
+    .lime-text { color: var(--lime); }
+    .lime-bg { background: var(--lime); color: var(--ink) !important; }
+    .lime-dot {
+      display: inline-block; width: 7px; height: 7px;
+      background: var(--lime); border-radius: 50%;
+      margin-right: 7px; vertical-align: middle;
     }
   </style>
 </head>
 <body>
 
-<div class="logo">MasterClass <span>Certificates</span></div>
+<div class="logo-bar">
+  <div class="logo-mc" id="logo-mc">MasterClass</div>
+  <div class="logo-certs" id="logo-certs">Certificates</div>
+</div>
 <div class="counter" id="counter">1 / 8</div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     SLIDE 1 — COVER
-═══════════════════════════════════════════════════════════ -->
 <div class="deck">
 
-  <div class="slide active" id="slide-1">
-    <div class="cover-eyebrow">Internal — Confidential</div>
+<!-- ══════════════════════════════════════════════════════
+     01 — COVER  (dark)
+══════════════════════════════════════════════════════ -->
+<div class="slide light active" id="slide-1">
+  <div class="cover-brand">
     <div class="cover-rule"></div>
-    <div class="cover-title">Q1 2026<br>Business Update</div>
-    <div class="cover-sub">MasterClass Certificates &nbsp;·&nbsp; March 2026</div>
+  </div>
+  <div class="display-lg" style="color:var(--ink);max-width:700px;">
+    Q1 2026<br>Business<br>Update
+  </div>
+  <div class="cover-date">MasterClass Certificates &nbsp;·&nbsp; March 2026 &nbsp;·&nbsp; Internal</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     02 — MISSION  (light)
+══════════════════════════════════════════════════════ -->
+<div class="slide light" id="slide-2">
+  <div class="slide-header">
+    <div class="slide-label">Context</div>
+    <div class="slide-line"></div>
+    <div class="slide-num">02</div>
   </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     SLIDE 2 — THE MISSION
-═══════════════════════════════════════════════════════════ -->
-  <div class="slide" id="slide-2">
-    <div class="slide-header">
-      <div class="slide-label">Context</div>
-      <div class="slide-header-line"></div>
-      <div class="slide-num">02</div>
-    </div>
-
-    <div class="mission-layout">
-      <div class="mission-left">
-        <h2>Our 2026<br><span class="gold">Mission</span></h2>
-        <p>Make MasterClass Certificates a scaled growth engine — moving from early proof-of-concept to a repeatable, high-margin business.</p>
-        <div class="mission-stats">
-          <div class="mission-stat">
-            <div class="v">$8M</div>
-            <div class="l">2026 Revenue Target</div>
-          </div>
-          <div class="mission-stat">
-            <div class="v">1.4×</div>
-            <div class="l">Target ROAS</div>
-          </div>
-          <div class="mission-stat">
-            <div class="v">7+</div>
-            <div class="l">Courses Live by EOY</div>
-          </div>
+  <div class="mission-grid">
+    <div>
+      <div class="eyebrow">2026 Objective</div>
+      <div class="display" style="margin-bottom:20px;">Our<br><em>Mission</em></div>
+      <p class="body-text" style="max-width:360px;">Make MasterClass Certificates a scaled growth engine — moving from early proof-of-concept to a repeatable, high-margin business.</p>
+      <div class="mission-stat-grid">
+        <div>
+          <div class="ms-v">$8M</div>
+          <div class="ms-l">2026 Revenue</div>
         </div>
-      </div>
-
-      <div class="mission-right">
-        <div class="mission-kpi">
-          <div class="k">Annual Revenue</div>
-          <div class="row">
-            <div class="from">$2M ('25)</div>
-            <div class="arrow">→</div>
-            <div class="to">$8M</div>
-          </div>
-          <div class="progress-bar-wrap" style="margin-top:12px;">
-            <div class="progress-bar-track"><div class="progress-bar-fill" style="width:16%"></div></div>
-          </div>
-          <div style="font-size:10px;color:var(--gray);margin-top:4px;">$1.31M YTD &nbsp;(16% to annual goal)</div>
+        <div>
+          <div class="ms-v">1.4×</div>
+          <div class="ms-l">Target ROAS</div>
         </div>
-
-        <div class="mission-kpi">
-          <div class="k">Q1 Goal</div>
-          <div class="row">
-            <div class="from">$1M at 1.3× ROAS</div>
-            <div class="arrow" style="color:var(--green);">✓</div>
-            <div class="to" style="color:var(--green);">Achieved</div>
-          </div>
-          <div style="font-size:10px;color:var(--gray);margin-top:8px;">$1.31M at 1.5× ROAS — exceeded with 25 days remaining</div>
-        </div>
-
-        <div class="mission-kpi">
-          <div class="k">Production Economics</div>
-          <div class="row">
-            <div class="from">Reduce cost 30%</div>
-            <div class="arrow" style="color:var(--green);">✓</div>
-            <div class="to" style="color:var(--green);">$650K</div>
-          </div>
-          <div style="font-size:10px;color:var(--gray);margin-top:8px;">Budget tiering locked. Marketing inputs shape content from day one.</div>
+        <div>
+          <div class="ms-v">7+</div>
+          <div class="ms-l">Courses by EOY</div>
         </div>
       </div>
     </div>
-  </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     SLIDE 3 — Q1 AT A GLANCE
-═══════════════════════════════════════════════════════════ -->
-  <div class="slide" id="slide-3">
-    <div class="slide-header">
-      <div class="slide-label">Q1 Performance</div>
-      <div class="slide-header-line"></div>
-      <div class="slide-num">03</div>
-    </div>
-
-    <div class="slide-content">
-      <div class="subtitle">Jan 1 – Mar 5, 2026</div>
-
-      <div class="metric-grid metric-grid-4" style="margin-bottom:20px;">
-        <div class="metric-card highlight">
-          <div class="metric-label">Total Revenue</div>
-          <div class="metric-value gold">$1.31M</div>
-          <div class="metric-sub">vs. $1M Q1 target</div>
-          <div class="metric-vs">+31% above goal</div>
+    <div>
+      <div class="mission-kpi">
+        <div class="mission-kpi-k">Annual Revenue Goal</div>
+        <div class="mission-kpi-row">
+          <div class="mission-kpi-from">$2M ('25)</div>
+          <div class="mission-kpi-arr">→</div>
+          <div class="mission-kpi-to">$8M</div>
         </div>
-        <div class="metric-card">
-          <div class="metric-label">Blended ROAS</div>
-          <div class="metric-value">1.5×</div>
-          <div class="metric-sub">vs. 1.3× Q1 target</div>
-          <div class="metric-vs">Exceeding target</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-label">Total Orders</div>
-          <div class="metric-value">6,324</div>
-          <div class="metric-sub">Across all products</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-label">Avg. Order Value</div>
-          <div class="metric-value">$207</div>
-          <div class="metric-sub">Blended AOV</div>
-        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:16%;"></div></div>
+        <div class="mission-kpi-note">$1.31M YTD — 16% toward annual goal</div>
       </div>
 
-      <div class="metric-grid metric-grid-3">
-        <div class="metric-card">
-          <div class="metric-label">Total Ad Spend</div>
-          <div class="metric-value" style="font-size:28px;">$850K</div>
-          <div class="progress-bar-wrap">
-            <div class="progress-bar-track"><div class="progress-bar-fill" style="width:60%"></div></div>
-          </div>
-          <div class="metric-sub">Efficient pacing</div>
+      <div class="mission-kpi">
+        <div class="mission-kpi-k">Q1 Revenue Target</div>
+        <div class="mission-kpi-row">
+          <div class="mission-kpi-from">$1M at 1.3× ROAS</div>
+          <div class="mission-kpi-arr" style="color:#3a6e3a;">✓</div>
+          <div class="mission-kpi-to" style="color:#3a6e3a;">Achieved</div>
         </div>
-        <div class="metric-card">
-          <div class="metric-label">Peak Day ROAS</div>
-          <div class="metric-value" style="font-size:28px;">9.2×</div>
-          <div class="metric-sub">Feb 16 — AI surge</div>
-          <div class="metric-vs">AI product breakout</div>
+        <div class="mission-kpi-note">$1.31M at 1.5× ROAS — exceeded with 25 days to go</div>
+      </div>
+
+      <div class="mission-kpi">
+        <div class="mission-kpi-k">Production Economics</div>
+        <div class="mission-kpi-row">
+          <div class="mission-kpi-from">Reduce cost 30%</div>
+          <div class="mission-kpi-arr" style="color:#3a6e3a;">✓</div>
+          <div class="mission-kpi-to" style="color:#3a6e3a;">$650K</div>
         </div>
-        <div class="metric-card">
-          <div class="metric-label">Days Remaining Q1</div>
-          <div class="metric-value" style="font-size:28px;">~25</div>
-          <div class="metric-sub">Target already hit</div>
-          <div class="metric-vs">Clear upside ahead</div>
-        </div>
+        <div class="mission-kpi-note">Budget tiering locked. Done.</div>
       </div>
     </div>
   </div>
+</div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     SLIDE 4 — PRODUCT PERFORMANCE
-═══════════════════════════════════════════════════════════ -->
-  <div class="slide" id="slide-4">
-    <div class="slide-header">
-      <div class="slide-label">Product Breakdown</div>
-      <div class="slide-header-line"></div>
-      <div class="slide-num">04</div>
+<!-- ══════════════════════════════════════════════════════
+     03 — Q1 AT A GLANCE  (dark)
+══════════════════════════════════════════════════════ -->
+<div class="slide light" id="slide-3">
+  <div class="slide-header">
+    <div class="slide-label">Q1 Performance</div>
+    <div class="slide-line"></div>
+    <div class="slide-num">03</div>
+  </div>
+
+  <div class="slide-content">
+    <div class="eyebrow">Jan 1 – Mar 5, 2026</div>
+
+    <div class="g4" style="margin-bottom:16px;">
+      <div class="card-lime">
+        <div class="metric-label">Total Revenue</div>
+        <div class="metric-val" style="font-size:42px;">$1.31M</div>
+        <div class="metric-sub">vs. $1M Q1 target</div>
+        <div style="font-size:10px;font-weight:700;color:var(--ink);margin-top:6px;">+31% above goal</div>
+      </div>
+      <div class="card-light">
+        <div class="metric-label">Blended ROAS</div>
+        <div class="metric-val">1.5×</div>
+        <div class="metric-sub">vs. 1.3× target</div>
+        <div class="metric-up">Exceeding target</div>
+      </div>
+      <div class="card-light">
+        <div class="metric-label">Total Orders</div>
+        <div class="metric-val">6,324</div>
+        <div class="metric-sub">All products</div>
+      </div>
+      <div class="card-light">
+        <div class="metric-label">Avg. Order Value</div>
+        <div class="metric-val">$207</div>
+        <div class="metric-sub">Blended AOV</div>
+      </div>
     </div>
 
-    <div class="slide-content">
-      <div class="subtitle">Revenue · Orders · ROAS by Product &nbsp;(Q1 YTD)</div>
-
-      <div class="product-cards">
-
-        <!-- AI -->
-        <div class="product-card" style="border-color:var(--gold);">
-          <div class="name">AI Courses</div>
-          <div class="product-stat">
-            <div class="val">$797K</div>
-            <div class="lbl">Revenue</div>
-          </div>
-          <div class="product-stat">
-            <div class="val">4,371</div>
-            <div class="lbl">Orders</div>
-          </div>
-          <div class="roas-bar">
-            <div class="roas-label">
-              <span>ROAS</span>
-              <span class="roas-val">1.7×</span>
-            </div>
-            <div class="progress-bar-track">
-              <div class="progress-bar-fill" style="width:23%;background:var(--gold);"></div>
-            </div>
-          </div>
-          <div style="margin-top:12px;font-size:9px;color:var(--gray);line-height:1.6;">61% of total revenue<br>Dominant volume driver</div>
-        </div>
-
-        <!-- NSF -->
-        <div class="product-card">
-          <div class="name">NSF</div>
-          <div class="product-stat">
-            <div class="val">$274K</div>
-            <div class="lbl">Revenue</div>
-          </div>
-          <div class="product-stat">
-            <div class="val">1,205</div>
-            <div class="lbl">Orders</div>
-          </div>
-          <div class="roas-bar">
-            <div class="roas-label">
-              <span>ROAS</span>
-              <span class="roas-val">1.1×</span>
-            </div>
-            <div class="progress-bar-track">
-              <div class="progress-bar-fill" style="width:15%;background:var(--gray);"></div>
-            </div>
-          </div>
-          <div style="margin-top:12px;font-size:9px;color:var(--gray);line-height:1.6;">21% of total revenue<br>Room to improve efficiency</div>
-        </div>
-
-        <!-- Moonshots -->
-        <div class="product-card">
-          <div class="name">Moonshots</div>
-          <div class="product-stat">
-            <div class="val">$102K</div>
-            <div class="lbl">Revenue</div>
-          </div>
-          <div class="product-stat">
-            <div class="val">466</div>
-            <div class="lbl">Orders</div>
-          </div>
-          <div class="roas-bar">
-            <div class="roas-label">
-              <span>ROAS</span>
-              <span class="roas-val">1.0×</span>
-            </div>
-            <div class="progress-bar-track">
-              <div class="progress-bar-fill" style="width:13%;background:var(--gray);"></div>
-            </div>
-          </div>
-          <div style="margin-top:12px;font-size:9px;color:var(--gray);line-height:1.6;">8% of total revenue<br>Optimization opportunity</div>
-        </div>
-
-        <!-- NVIDIA -->
-        <div class="product-card">
-          <div class="name">NVIDIA</div>
-          <div class="product-stat">
-            <div class="val">$77K</div>
-            <div class="lbl">Revenue</div>
-          </div>
-          <div class="product-stat">
-            <div class="val">124</div>
-            <div class="lbl">Orders</div>
-          </div>
-          <div class="roas-bar">
-            <div class="roas-label">
-              <span>ROAS</span>
-              <span class="roas-val" style="color:var(--green);">7.5×</span>
-            </div>
-            <div class="progress-bar-track">
-              <div class="progress-bar-fill" style="width:100%;background:var(--green);"></div>
-            </div>
-          </div>
-          <div style="margin-top:12px;font-size:9px;color:var(--green);line-height:1.6;">Highest ROAS<br>Scale opportunity</div>
-        </div>
-
-        <!-- Microsoft -->
-        <div class="product-card">
-          <div class="name">Microsoft</div>
-          <div class="product-stat">
-            <div class="val">$60K</div>
-            <div class="lbl">Revenue</div>
-          </div>
-          <div class="product-stat">
-            <div class="val">158</div>
-            <div class="lbl">Orders</div>
-          </div>
-          <div class="roas-bar">
-            <div class="roas-label">
-              <span>ROAS</span>
-              <span class="roas-val" style="color:var(--green);">6.3×</span>
-            </div>
-            <div class="progress-bar-track">
-              <div class="progress-bar-fill" style="width:84%;background:var(--green);"></div>
-            </div>
-          </div>
-          <div style="margin-top:12px;font-size:9px;color:var(--green);line-height:1.6;">Strong ROAS signal<br>Early-stage, high potential</div>
-        </div>
-
+    <div class="g3">
+      <div class="card-light">
+        <div class="metric-label">Total Ad Spend</div>
+        <div class="metric-val" style="font-size:30px;">$850K</div>
+        <div class="bar-track"><div class="bar-fill" style="width:60%;"></div></div>
+        <div class="metric-sub">Efficient pacing</div>
+      </div>
+      <div class="card-light">
+        <div class="metric-label">Peak Day ROAS</div>
+        <div class="metric-val" style="font-size:30px;background:var(--lime);display:inline-block;padding:0 8px;border-radius:2px;">9.2×</div>
+        <div class="metric-sub" style="margin-top:8px;">Feb 16 — AI product surge</div>
+      </div>
+      <div class="card-light">
+        <div class="metric-label">Days Remaining Q1</div>
+        <div class="metric-val" style="font-size:30px;">~25</div>
+        <div class="metric-sub">Target already hit — more upside ahead</div>
       </div>
     </div>
   </div>
+</div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     SLIDE 5 — 2026 OKR TRACKER
-═══════════════════════════════════════════════════════════ -->
-  <div class="slide" id="slide-5">
-    <div class="slide-header">
-      <div class="slide-label">2026 OKR Tracker</div>
-      <div class="slide-header-line"></div>
-      <div class="slide-num">05</div>
-    </div>
+<!-- ══════════════════════════════════════════════════════
+     04 — PRODUCT PERFORMANCE  (light)
+══════════════════════════════════════════════════════ -->
+<div class="slide light" id="slide-4">
+  <div class="slide-header">
+    <div class="slide-label">Product Breakdown</div>
+    <div class="slide-line"></div>
+    <div class="slide-num">04</div>
+  </div>
 
-    <div class="slide-content">
-      <div class="subtitle">Objective: Cert becomes a scaled growth engine for MasterClass</div>
+  <div class="slide-content">
+    <div class="eyebrow">Revenue · Orders · ROAS — Q1 YTD</div>
 
-      <div class="okr-grid">
-
-        <div class="okr-item">
-          <div class="okr-badge badge-done">Done</div>
-          <div class="okr-text"><strong>Reduce Production Cost 30%</strong>Budget tiering locked at $650K/course. Marketing shapes content from day one.</div>
+    <div class="g5">
+      <!-- AI — featured -->
+      <div class="product-card" style="border-top:3px solid var(--lime);">
+        <div class="product-name">AI Courses</div>
+        <div class="product-val">$797K</div>
+        <div class="product-lbl">Revenue</div>
+        <div class="product-val">4,371</div>
+        <div class="product-lbl">Orders</div>
+        <div class="roas-row">
+          <span>ROAS</span>
+          <span class="roas-strong">1.7×</span>
         </div>
+        <div class="bar-track"><div class="bar-fill" style="width:23%;"></div></div>
+        <div style="margin-top:10px;font-size:9px;color:var(--ink-3);line-height:1.6;">61% of total revenue<br>Dominant volume driver</div>
+      </div>
 
-        <div class="okr-item">
-          <div class="okr-badge badge-done">Done</div>
-          <div class="okr-text"><strong>Q1 Revenue Goal: $1M at 1.3× ROAS</strong>Achieved $1.31M at 1.5× ROAS — with 25 days still remaining in Q1.</div>
+      <!-- NSF -->
+      <div class="product-card">
+        <div class="product-name">NSF</div>
+        <div class="product-val">$274K</div>
+        <div class="product-lbl">Revenue</div>
+        <div class="product-val">1,205</div>
+        <div class="product-lbl">Orders</div>
+        <div class="roas-row">
+          <span>ROAS</span>
+          <span class="roas-strong">1.1×</span>
         </div>
+        <div class="bar-track"><div class="bar-fill" style="width:15%;background:var(--sand-mid);"></div></div>
+        <div style="margin-top:10px;font-size:9px;color:var(--ink-3);line-height:1.6;">21% of revenue<br>Efficiency opportunity</div>
+      </div>
 
-        <div class="okr-item">
-          <div class="okr-badge badge-track">On Track</div>
-          <div class="okr-text"><strong>Scale Catalog: 7+ Courses by EOY</strong>AI Bundle, AI Fundamentals, NVIDIA & Microsoft launching Q1. 1–2 agreements signed.</div>
+      <!-- Moonshots -->
+      <div class="product-card">
+        <div class="product-name">Moonshots</div>
+        <div class="product-val">$102K</div>
+        <div class="product-lbl">Revenue</div>
+        <div class="product-val">466</div>
+        <div class="product-lbl">Orders</div>
+        <div class="roas-row">
+          <span>ROAS</span>
+          <span class="roas-strong">1.0×</span>
         </div>
+        <div class="bar-track"><div class="bar-fill" style="width:13%;background:var(--sand-mid);"></div></div>
+        <div style="margin-top:10px;font-size:9px;color:var(--ink-3);line-height:1.6;">8% of revenue<br>Needs creative refresh</div>
+      </div>
 
-        <div class="okr-item">
-          <div class="okr-badge badge-track">On Track</div>
-          <div class="okr-text"><strong>Validate Next Topics</strong>16 topics running painted door tests. Painting a clear picture of the 2026 catalog.</div>
+      <!-- NVIDIA -->
+      <div class="product-card">
+        <div class="product-name">NVIDIA</div>
+        <div class="product-val">$77K</div>
+        <div class="product-lbl">Revenue</div>
+        <div class="product-val">124</div>
+        <div class="product-lbl">Orders</div>
+        <div class="roas-row">
+          <span>ROAS</span>
+          <span class="roas-strong" style="color:#3a6e3a;">7.5×</span>
         </div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div>
+        <div style="margin-top:10px;font-size:9px;color:#3a6e3a;line-height:1.6;font-weight:600;">Highest ROAS<br>Scale now</div>
+      </div>
 
-        <div class="okr-item">
-          <div class="okr-badge badge-progress">In Progress</div>
-          <div class="okr-text"><strong>Grow Revenue 10% / Visitor</strong>Price testing live for MSFT, NVIDIA, AI Fundamentals, AI Bundle. Add-ons and quiz tests queued.</div>
+      <!-- Microsoft -->
+      <div class="product-card">
+        <div class="product-name">Microsoft</div>
+        <div class="product-val">$60K</div>
+        <div class="product-lbl">Revenue</div>
+        <div class="product-val">158</div>
+        <div class="product-lbl">Orders</div>
+        <div class="roas-row">
+          <span>ROAS</span>
+          <span class="roas-strong" style="color:#3a6e3a;">6.3×</span>
         </div>
-
-        <div class="okr-item">
-          <div class="okr-badge badge-progress">In Progress</div>
-          <div class="okr-text"><strong>Creative Refresh (5 RIP Pod Sprints)</strong>Testing 5+ new hooks, 4+ static designs, 1 AI-first video per course. Spring sale assets by Mar 26.</div>
-        </div>
-
-        <div class="okr-item">
-          <div class="okr-badge badge-progress">In Progress</div>
-          <div class="okr-text"><strong>2× Member Penetration (0.6% → 1.2%)</strong>Outbound email tests, bulk pricing strategy, journey optimization & homepage quiz (Q2).</div>
-        </div>
-
-        <div class="okr-item">
-          <div class="okr-badge badge-progress">In Progress</div>
-          <div class="okr-text"><strong>Enterprise as Channel</strong>AI Bundle & Leadership Under Pressure to Enterprise. MSFT Rewards + NVIDIA GTC leveraged.</div>
-        </div>
-
-        <div class="okr-item">
-          <div class="okr-badge badge-progress">In Progress</div>
-          <div class="okr-text"><strong>Improve Learner Completion: 4% → 8%</strong>Applied Learning Features in development. AI Roleplay for Negotiation launch in scope.</div>
-        </div>
-
-        <div class="okr-item">
-          <div class="okr-badge badge-tbd">Needs Init.</div>
-          <div class="okr-text"><strong>Hook Rate: 85% · NPS: 70</strong>Targets set. Initiatives and measurement plan TBD — critical Q2 focus area.</div>
-        </div>
-
+        <div class="bar-track"><div class="bar-fill" style="width:84%;"></div></div>
+        <div style="margin-top:10px;font-size:9px;color:#3a6e3a;line-height:1.6;font-weight:600;">Strong ROAS signal<br>High potential</div>
       </div>
     </div>
   </div>
+</div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     SLIDE 6 — WHAT'S WORKING
-═══════════════════════════════════════════════════════════ -->
-  <div class="slide" id="slide-6">
-    <div class="slide-header">
-      <div class="slide-label">Key Insights</div>
-      <div class="slide-header-line"></div>
-      <div class="slide-num">06</div>
-    </div>
+<!-- ══════════════════════════════════════════════════════
+     05 — OKR TRACKER  (dark)
+══════════════════════════════════════════════════════ -->
+<div class="slide light" id="slide-5">
+  <div class="slide-header">
+    <div class="slide-label">2026 OKR Tracker</div>
+    <div class="slide-line"></div>
+    <div class="slide-num">05</div>
+  </div>
 
-    <div class="slide-content">
-      <div class="subtitle">What's Working — and Where to Push Harder</div>
-
-      <div class="insight-grid">
-
-        <div class="insight-card">
-          <div class="insight-num">61%</div>
-          <div class="insight-title">AI is the Revenue Engine</div>
-          <div class="insight-body">AI Courses account for 61% of total Q1 revenue ($797K) with a 1.7× ROAS — the strongest volume-efficiency combination in the portfolio. The Feb 16 spike (9.2× ROAS) signals untapped burst potential during the right market conditions.</div>
-        </div>
-
-        <div class="insight-card">
-          <div class="insight-num">7.5×</div>
-          <div class="insight-title">NVIDIA & Microsoft Signal Scale Upside</div>
-          <div class="insight-body">NVIDIA delivers 7.5× ROAS and Microsoft 6.3× — both far above portfolio average — but on small spend budgets ($10K and $9K respectively). Scaling spend on these two products could unlock meaningful revenue with high efficiency. GTC and the Microsoft Rewards program are immediate levers.</div>
-        </div>
-
-        <div class="insight-card">
-          <div class="insight-num">1.0×</div>
-          <div class="insight-title">NSF & Moonshots Need Efficiency Work</div>
-          <div class="insight-body">Together NSF and Moonshots represent $376K in revenue (29% of total) but run at 1.0–1.1× ROAS, barely breaking even on ad spend. Creative refresh and tighter audience targeting are needed before scaling spend on these products further.</div>
-        </div>
-
-        <div class="insight-card">
-          <div class="insight-num">$650K</div>
-          <div class="insight-title">Production Economics Are Locked In</div>
-          <div class="insight-body">The cost-per-course target of $650K is achieved — a 30% reduction from prior baseline. With production economics improving, every additional course added to the catalog comes online with better unit economics, making the path to $8M more capital-efficient.</div>
-        </div>
-
+  <div class="slide-content">
+    <div class="eyebrow">Objective: Cert becomes a scaled growth engine for MasterClass</div>
+    <div class="okr-grid">
+      <div class="okr-row light">
+        <div class="badge b-done">Done</div>
+        <div class="okr-text"><strong>Reduce Production Cost → $650K</strong><p>Budget tiering locked at $650K/course. Marketing shapes content from day one.</p></div>
+      </div>
+      <div class="okr-row light">
+        <div class="badge b-done">Done</div>
+        <div class="okr-text"><strong>Q1 Revenue: $1M at 1.3× ROAS</strong><p>Achieved $1.31M at 1.5× ROAS — 25 days still remaining in Q1.</p></div>
+      </div>
+      <div class="okr-row light">
+        <div class="badge b-track">On Track</div>
+        <div class="okr-text"><strong>Scale Catalog: 7+ Courses by EOY</strong><p>AI Bundle, AI Fundamentals, NVIDIA & Microsoft launching Q1. 1–2 agreements signed.</p></div>
+      </div>
+      <div class="okr-row light">
+        <div class="badge b-track">On Track</div>
+        <div class="okr-text"><strong>Validate Next Topics</strong><p>16 topics running painted door tests. Building 2026 catalog pipeline.</p></div>
+      </div>
+      <div class="okr-row light">
+        <div class="badge b-progress">In Progress</div>
+        <div class="okr-text"><strong>Grow Revenue 10% / Visitor</strong><p>Price testing live for MSFT, NVIDIA, AI Fundamentals, AI Bundle. Add-ons queued.</p></div>
+      </div>
+      <div class="okr-row light">
+        <div class="badge b-progress">In Progress</div>
+        <div class="okr-text"><strong>Creative Refresh — 5 RIP Pod Sprints</strong><p>5+ new hooks, 4+ static designs, 1 AI-first video per course. Spring assets by Mar 26.</p></div>
+      </div>
+      <div class="okr-row light">
+        <div class="badge b-progress">In Progress</div>
+        <div class="okr-text"><strong>2× Member Penetration (0.6% → 1.2%)</strong><p>Outbound email tests, bulk pricing, journey optimization & homepage quiz (Q2).</p></div>
+      </div>
+      <div class="okr-row light">
+        <div class="badge b-progress">In Progress</div>
+        <div class="okr-text"><strong>Enterprise as Channel</strong><p>AI Bundle to Enterprise. MSFT Rewards (1B+ members) + NVIDIA GTC (30K) leveraged.</p></div>
+      </div>
+      <div class="okr-row light">
+        <div class="badge b-progress">In Progress</div>
+        <div class="okr-text"><strong>Learner Completion: 4% → 8%</strong><p>Applied Learning Features in dev. AI Roleplay for Negotiation launch in scope.</p></div>
+      </div>
+      <div class="okr-row light">
+        <div class="badge b-tbd">Needs Init.</div>
+        <div class="okr-text"><strong>Hook Rate: 85% · NPS: 70</strong><p>Targets set. Measurement plan TBD — Q2 critical focus area.</p></div>
       </div>
     </div>
   </div>
+</div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     SLIDE 7 — CURRENT INITIATIVES
-═══════════════════════════════════════════════════════════ -->
-  <div class="slide" id="slide-7">
-    <div class="slide-header">
-      <div class="slide-label">Q1 Initiatives</div>
-      <div class="slide-header-line"></div>
-      <div class="slide-num">07</div>
-    </div>
+<!-- ══════════════════════════════════════════════════════
+     06 — WHAT'S WORKING  (light)
+══════════════════════════════════════════════════════ -->
+<div class="slide light" id="slide-6">
+  <div class="slide-header">
+    <div class="slide-label">Key Insights</div>
+    <div class="slide-line"></div>
+    <div class="slide-num">06</div>
+  </div>
 
-    <div class="slide-content">
-      <div class="subtitle">Active Bets in Flight This Quarter</div>
-
-      <div class="init-grid">
-
-        <div class="init-item">
-          <div class="init-icon">🎬</div>
-          <div class="init-text">
-            <strong>Creative Refresh — RIP Pod Sprints</strong>
-            <p>5 sprint cycles in Q1 delivering new hooks (5+ per course), static designs (4+), and an AI-first video format. Spring sale assets ship by Mar 26.</p>
-          </div>
-        </div>
-
-        <div class="init-item">
-          <div class="init-icon">💰</div>
-          <div class="init-text">
-            <strong>Price & Packaging Tests</strong>
-            <p>Running price optimization for MSFT, NVIDIA, AI Fundamentals, and the AI Bundle. Testing add-ons as packaging levers. Intent-building quizzes on 1–2 certs.</p>
-          </div>
-        </div>
-
-        <div class="init-item">
-          <div class="init-icon">👥</div>
-          <div class="init-text">
-            <strong>Member Penetration</strong>
-            <p>Leadership outbound emails to MAW and new customers. Bulk pricing strategy defined. Core member email journeys optimized. Testimonials embedded.</p>
-          </div>
-        </div>
-
-        <div class="init-item">
-          <div class="init-icon">🏢</div>
-          <div class="init-text">
-            <strong>Enterprise Channel</strong>
-            <p>AI Bundle pushed to Enterprise. Leveraging MSFT Rewards (1B+ members), NVIDIA GTC (30K attendees), developer community (2M), and NPN partners.</p>
-          </div>
-        </div>
-
-        <div class="init-item">
-          <div class="init-icon">📚</div>
-          <div class="init-text">
-            <strong>Catalog Expansion</strong>
-            <p>AI Bundle, AI Fundamentals, NVIDIA, and Microsoft courses launching in Q1. 1–2 new agreements signed. 16 painted door topic tests running for 2026 catalog.</p>
-          </div>
-        </div>
-
-        <div class="init-item">
-          <div class="init-icon">🎯</div>
-          <div class="init-text">
-            <strong>Applied Learning & AI Roleplay</strong>
-            <p>Applied Learning Features in development to drive completion from 4% → 8%. AI Roleplay feature targeting Negotiation course launch for interactive practice.</p>
-          </div>
-        </div>
-
+  <div class="slide-content">
+    <div class="eyebrow">What's working — and where to push harder</div>
+    <div class="g2">
+      <div class="card-light">
+        <div class="insight-num" style="color:var(--ink);">61%</div>
+        <div class="insight-title">AI is the revenue engine</div>
+        <p class="body-text" style="font-size:12px;">AI Courses = $797K, 61% of total Q1 revenue at 1.7× ROAS — the strongest volume-efficiency combo in the portfolio. The Feb 16 spike (9.2× ROAS, 577 orders) signals untapped burst potential.</p>
+      </div>
+      <div class="card-light">
+        <div class="insight-num" style="color:var(--ink);">7.5×</div>
+        <div class="insight-title">NVIDIA & Microsoft signal scale upside</div>
+        <p class="body-text" style="font-size:12px;">7.5× and 6.3× ROAS on tiny spend budgets ($10K and $9K). Aggressively scaling these two products is the highest-ROI move available right now. GTC and the Rewards program are the levers.</p>
+      </div>
+      <div class="card-light">
+        <div class="insight-num" style="color:var(--ink);">1.0×</div>
+        <div class="insight-title">NSF & Moonshots need efficiency work</div>
+        <p class="body-text" style="font-size:12px;">Together $376K in revenue (29% of total) but at 1.0–1.1× ROAS — barely breaking even on spend. Deploy RIP Pod creative and sharpen targeting before scaling spend.</p>
+      </div>
+      <div class="card-light">
+        <div class="insight-num" style="color:var(--ink);">$650K</div>
+        <div class="insight-title">Production economics are locked in</div>
+        <p class="body-text" style="font-size:12px;">30% cost reduction achieved. Every new course now comes online with better unit economics, making the path from $1.31M YTD to $8M annual much more capital-efficient.</p>
       </div>
     </div>
   </div>
+</div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     SLIDE 8 — WHAT'S NEXT
-═══════════════════════════════════════════════════════════ -->
-  <div class="slide" id="slide-8">
-    <div class="slide-header">
-      <div class="slide-label">Looking Ahead</div>
-      <div class="slide-header-line"></div>
-      <div class="slide-num">08</div>
-    </div>
+<!-- ══════════════════════════════════════════════════════
+     07 — CURRENT INITIATIVES  (dark)
+══════════════════════════════════════════════════════ -->
+<div class="slide light" id="slide-7">
+  <div class="slide-header">
+    <div class="slide-label">Q1 Initiatives</div>
+    <div class="slide-line"></div>
+    <div class="slide-num">07</div>
+  </div>
 
-    <div class="slide-content">
-      <div class="subtitle">Priorities to Unlock Q2 and Beyond</div>
-
-      <div class="next-grid">
-
-        <div class="next-card">
-          <div class="quarter">Q2 Priority</div>
-          <div class="title">Scale NVIDIA & Microsoft</div>
-          <div class="body">7.5× and 6.3× ROAS on tiny spend budgets. Aggressively increase investment in these two products. Leverage GTC, Rewards program, and enterprise partners to drive volume without sacrificing efficiency.</div>
+  <div class="slide-content">
+    <div class="eyebrow">Active bets in flight this quarter</div>
+    <div class="g2">
+      <div class="init-item">
+        <div class="init-dot"></div>
+        <div class="init-text">
+          <strong>Creative Refresh — RIP Pod Sprints</strong>
+          <p>5 sprint cycles delivering 5+ new hooks, 4+ static designs, 1 AI-first video per course. Spring sale assets ship by Mar 26.</p>
         </div>
-
-        <div class="next-card">
-          <div class="quarter">Q2 Priority</div>
-          <div class="title">Fix NSF & Moonshots Efficiency</div>
-          <div class="body">1.0–1.1× ROAS is unsustainable at scale. Deploy RIP Pod creative assets, sharpen audience targeting, and run price testing before increasing spend on these products.</div>
-        </div>
-
-        <div class="next-card">
-          <div class="quarter">Q2 Priority</div>
-          <div class="title">Launch Applied Learning</div>
-          <div class="body">Drive completion from 4% → 8% with Applied Learning Features and AI Roleplay for Negotiation. Completion is a direct lever for NPS and member retention — both lagging behind targets.</div>
-        </div>
-
-        <div class="next-card">
-          <div class="quarter">Future Bet</div>
-          <div class="title">Webinars & Bigger Bets</div>
-          <div class="body">Develop a webinar strategy and brainstorm 2× or 10× opportunities at in-person quarterly meet. The team operates as founders: step-changes, not increments. Move fast and kill fast.</div>
-        </div>
-
       </div>
-
-      <div style="margin-top:24px;padding:20px 24px;background:var(--card);border:1px solid var(--border);border-radius:6px;display:flex;justify-content:space-between;align-items:center;">
-        <div style="font-size:11px;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Annual Revenue Goal</div>
-        <div style="font-size:11px;color:var(--gray);">$1.31M YTD → <span style="color:var(--gold);font-weight:600;">$8M by Dec 2026</span></div>
-        <div style="display:flex;align-items:center;gap:12px;flex:1;max-width:300px;margin:0 32px;">
-          <div class="progress-bar-track" style="flex:1;"><div class="progress-bar-fill" style="width:16%;"></div></div>
-          <span style="font-size:10px;color:var(--gold);">16%</span>
+      <div class="init-item">
+        <div class="init-dot"></div>
+        <div class="init-text">
+          <strong>Price & Packaging Tests</strong>
+          <p>Price optimization for MSFT, NVIDIA, AI Fundamentals, AI Bundle. Add-ons as packaging levers. Intent-building quizzes on 1–2 certs.</p>
         </div>
-        <div style="font-size:11px;color:var(--green);">Q1 Target ✓ Achieved</div>
+      </div>
+      <div class="init-item">
+        <div class="init-dot"></div>
+        <div class="init-text">
+          <strong>Member Penetration</strong>
+          <p>Leadership outbound emails to MAW & new customers. Bulk pricing strategy defined. Core member journeys optimized. Testimonials embedded.</p>
+        </div>
+      </div>
+      <div class="init-item">
+        <div class="init-dot"></div>
+        <div class="init-text">
+          <strong>Enterprise Channel</strong>
+          <p>AI Bundle pushed to Enterprise. MSFT Rewards (1B+ members), NVIDIA GTC (30K), developer community (2M), NPN partners.</p>
+        </div>
+      </div>
+      <div class="init-item">
+        <div class="init-dot"></div>
+        <div class="init-text">
+          <strong>Catalog Expansion</strong>
+          <p>AI Bundle, AI Fundamentals, NVIDIA & Microsoft courses launching Q1. 1–2 new agreements signed. 16 painted door topic tests running.</p>
+        </div>
+      </div>
+      <div class="init-item">
+        <div class="init-dot"></div>
+        <div class="init-text">
+          <strong>Applied Learning & AI Roleplay</strong>
+          <p>Applied Learning Features in dev to push completion 4% → 8%. AI Roleplay targeting Negotiation launch for interactive practice.</p>
+        </div>
       </div>
     </div>
   </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     08 — WHAT'S NEXT  (light)
+══════════════════════════════════════════════════════ -->
+<div class="slide light" id="slide-8">
+  <div class="slide-header">
+    <div class="slide-label">Looking Ahead</div>
+    <div class="slide-line"></div>
+    <div class="slide-num">08</div>
+  </div>
+
+  <div class="slide-content">
+    <div class="eyebrow">Priorities to unlock Q2 and beyond</div>
+    <div class="g4" style="margin-bottom:16px;">
+      <div class="next-card light">
+        <div class="next-q">Q2 Priority</div>
+        <div class="next-title">Scale NVIDIA & Microsoft</div>
+        <div class="next-body">7.5× and 6.3× ROAS on minimal spend. Aggressively increase budgets. GTC, Rewards program, and enterprise partners drive volume without sacrificing efficiency.</div>
+      </div>
+      <div class="next-card light">
+        <div class="next-q">Q2 Priority</div>
+        <div class="next-title">Fix NSF & Moonshots</div>
+        <div class="next-body">1.0–1.1× ROAS is unsustainable at scale. Deploy RIP Pod creative, sharpen audience targeting, and complete price testing before increasing spend.</div>
+      </div>
+      <div class="next-card light">
+        <div class="next-q">Q2 Priority</div>
+        <div class="next-title">Launch Applied Learning</div>
+        <div class="next-body">Push completion from 4% → 8% with Applied Learning Features and AI Roleplay for Negotiation. Direct lever for NPS and member retention.</div>
+      </div>
+      <div class="next-card light">
+        <div class="next-q">Future Bet</div>
+        <div class="next-title">Webinars & Bigger Bets</div>
+        <div class="next-body">Develop webinar strategy. Brainstorm 2× or 10× opportunities at in-person quarterly. Move fast, kill fast — step-changes, not increments.</div>
+      </div>
+    </div>
+
+    <div style="padding:18px 22px;background:var(--sand-light);border:1px solid var(--border-sand);border-radius:4px;display:flex;justify-content:space-between;align-items:center;gap:20px;">
+      <div style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-3);">Annual Goal</div>
+      <div style="font-size:11px;color:var(--ink-2);">$1.31M YTD</div>
+      <div style="flex:1;max-width:260px;">
+        <div class="bar-track"><div class="bar-fill" style="width:16%;"></div></div>
+        <div style="font-size:9px;color:var(--ink-3);margin-top:3px;">16% of $8M annual target</div>
+      </div>
+      <div style="font-size:11px;font-weight:600;color:#3a6e3a;">Q1 ✓ &nbsp;$1M target achieved</div>
+      <div style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-3);">Dec 2026</div>
+      <div style="font-family:'Cormorant',serif;font-size:22px;color:var(--ink);">$8M</div>
+    </div>
+  </div>
+</div>
 
 </div><!-- /deck -->
 
-<!-- ── NAVIGATION ────────────────────────────────────────── -->
-<nav class="nav">
-  <button class="nav-btn" id="prev" aria-label="Previous slide" disabled>‹</button>
+<!-- ── BOTTOM NAV ───────────────────────────────── -->
+<nav class="nav" id="nav">
+  <button class="nav-btn" id="prev" disabled>‹</button>
   <div class="nav-dots" id="dots"></div>
-  <button class="nav-btn" id="next" aria-label="Next slide">›</button>
+  <button class="nav-btn" id="next">›</button>
 </nav>
 
 <script>
   const slides = document.querySelectorAll('.slide');
   const total = slides.length;
-  let current = 0;
+  let cur = 0;
 
-  const dotsContainer = document.getElementById('dots');
+  const dots = document.getElementById('dots');
+  const counter = document.getElementById('counter');
+  const logoMc = document.getElementById('logo-mc');
+  const logoCerts = document.getElementById('logo-certs');
+  const nav = document.getElementById('nav');
   const prevBtn = document.getElementById('prev');
   const nextBtn = document.getElementById('next');
-  const counter = document.getElementById('counter');
 
-  // Build dots
   slides.forEach((_, i) => {
     const d = document.createElement('div');
     d.className = 'nav-dot' + (i === 0 ? ' active' : '');
     d.addEventListener('click', () => goTo(i));
-    dotsContainer.appendChild(d);
+    dots.appendChild(d);
   });
 
-  function goTo(n) {
-    slides[current].classList.remove('active');
-    dotsContainer.children[current].classList.remove('active');
-    current = Math.max(0, Math.min(n, total - 1));
-    slides[current].classList.add('active');
-    dotsContainer.children[current].classList.add('active');
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === total - 1;
-    counter.textContent = (current + 1) + ' / ' + total;
+  function updateTheme() {
+    dots.querySelectorAll('.nav-dot').forEach((d, i) => {
+      d.style.background = i === cur ? 'var(--ink)' : 'rgba(22,20,12,0.2)';
+    });
   }
 
-  prevBtn.addEventListener('click', () => goTo(current - 1));
-  nextBtn.addEventListener('click', () => goTo(current + 1));
+  function goTo(n) {
+    slides[cur].classList.remove('active');
+    dots.children[cur].classList.remove('active');
+    cur = Math.max(0, Math.min(n, total - 1));
+    slides[cur].classList.add('active');
+    dots.children[cur].classList.add('active');
+    prevBtn.disabled = cur === 0;
+    nextBtn.disabled = cur === total - 1;
+    counter.textContent = (cur + 1) + ' / ' + total;
+    updateTheme();
+  }
 
+  prevBtn.addEventListener('click', () => goTo(cur - 1));
+  nextBtn.addEventListener('click', () => goTo(cur + 1));
   document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') goTo(current + 1);
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goTo(current - 1);
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') goTo(cur + 1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')                      goTo(cur - 1);
   });
+
+  updateTheme(slides[0]);
 </script>
 </body>
 </html>
