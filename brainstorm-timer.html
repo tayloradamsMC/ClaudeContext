@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brainstorm Timer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #1a1a2e;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.8s ease;
+    }
+
+    body.done {
+      background: #ff4757;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { background: #ff4757; }
+      50% { background: #ff6b81; }
+    }
+
+    .container {
+      text-align: center;
+      width: 100%;
+      max-width: 500px;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: 48px;
+    }
+
+    .timer-display {
+      font-size: 8rem;
+      font-weight: 200;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 16px;
+      font-variant-numeric: tabular-nums;
+      transition: color 0.3s;
+    }
+
+    .timer-display.warning {
+      color: #ffa502;
+    }
+
+    .timer-display.critical {
+      color: #ff4757;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 3px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+      margin-bottom: 48px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #fff;
+      border-radius: 2px;
+      width: 100%;
+      transition: width 1s linear, background 0.3s;
+    }
+
+    .progress-fill.warning { background: #ffa502; }
+    .progress-fill.critical { background: #ff4757; }
+
+    .setup {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .time-input-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .time-input-group input {
+      width: 64px;
+      padding: 10px 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1.4rem;
+      text-align: center;
+      outline: none;
+      transition: border-color 0.2s;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .time-input-group input:focus {
+      border-color: rgba(255,255,255,0.6);
+    }
+
+    .time-input-group label {
+      font-size: 0.75rem;
+      opacity: 0.5;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .separator {
+      font-size: 1.8rem;
+      opacity: 0.4;
+      margin-bottom: 16px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    button {
+      padding: 14px 36px;
+      border: none;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+
+    button:active { transform: scale(0.97); }
+
+    .btn-start {
+      background: #fff;
+      color: #1a1a2e;
+    }
+
+    .btn-pause {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .btn-reset {
+      background: transparent;
+      color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    button:hover { opacity: 0.85; }
+
+    .done-message {
+      display: none;
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      margin-bottom: 32px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    body.done .done-message { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .presets {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .preset-btn {
+      padding: 6px 14px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preset-btn:hover {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Brainstorm Timer</h1>
+
+    <div class="timer-display" id="display">00:00</div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress"></div>
+    </div>
+
+    <div class="done-message">Time's up!</div>
+
+    <div class="presets">
+      <button class="preset-btn" onclick="setPreset(5)">5 min</button>
+      <button class="preset-btn" onclick="setPreset(10)">10 min</button>
+      <button class="preset-btn" onclick="setPreset(15)">15 min</button>
+      <button class="preset-btn" onclick="setPreset(25)">25 min</button>
+    </div>
+
+    <div class="setup" id="setup">
+      <div class="time-input-group">
+        <input type="number" id="minutesInput" value="5" min="0" max="99" />
+        <label>min</label>
+      </div>
+      <div class="separator">:</div>
+      <div class="time-input-group">
+        <input type="number" id="secondsInput" value="0" min="0" max="59" />
+        <label>sec</label>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="btn-start" id="startBtn" onclick="startTimer()">Start</button>
+      <button class="btn-pause" id="pauseBtn" onclick="pauseTimer()" style="display:none">Pause</button>
+      <button class="btn-reset" onclick="resetTimer()">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    let totalSeconds = 0;
+    let remaining = 0;
+    let interval = null;
+    let running = false;
+
+    const display = document.getElementById('display');
+    const progress = document.getElementById('progress');
+    const startBtn = document.getElementById('startBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+
+    function setPreset(minutes) {
+      document.getElementById('minutesInput').value = minutes;
+      document.getElementById('secondsInput').value = 0;
+      if (!running) updateDisplayFromInputs();
+    }
+
+    function pad(n) {
+      return String(n).padStart(2, '0');
+    }
+
+    function updateDisplay(secs) {
+      const m = Math.floor(secs / 60);
+      const s = secs % 60;
+      display.textContent = `${pad(m)}:${pad(s)}`;
+
+      const pct = totalSeconds > 0 ? (remaining / totalSeconds) * 100 : 100;
+      progress.style.width = pct + '%';
+
+      display.className = 'timer-display';
+      progress.className = 'progress-fill';
+
+      if (pct <= 20 && pct > 10) {
+        display.classList.add('warning');
+        progress.classList.add('warning');
+      } else if (pct <= 10) {
+        display.classList.add('critical');
+        progress.classList.add('critical');
+      }
+    }
+
+    function updateDisplayFromInputs() {
+      const m = parseInt(document.getElementById('minutesInput').value) || 0;
+      const s = parseInt(document.getElementById('secondsInput').value) || 0;
+      updateDisplay(m * 60 + s);
+    }
+
+    function startTimer() {
+      if (running) return;
+
+      if (remaining === 0 || (!interval && remaining === 0)) {
+        const m = parseInt(document.getElementById('minutesInput').value) || 0;
+        const s = parseInt(document.getElementById('secondsInput').value) || 0;
+        totalSeconds = m * 60 + s;
+        remaining = totalSeconds;
+      }
+
+      if (remaining <= 0) return;
+
+      document.body.classList.remove('done');
+      running = true;
+      startBtn.style.display = 'none';
+      pauseBtn.style.display = 'inline-block';
+
+      interval = setInterval(() => {
+        remaining--;
+        updateDisplay(remaining);
+
+        if (remaining <= 0) {
+          clearInterval(interval);
+          interval = null;
+          running = false;
+          document.body.classList.add('done');
+          startBtn.textContent = 'Restart';
+          startBtn.style.display = 'inline-block';
+          pauseBtn.style.display = 'none';
+          remaining = 0;
+
+          try { new Audio('data:audio/wav;base64,').play(); } catch(e) {}
+        }
+      }, 1000);
+    }
+
+    function pauseTimer() {
+      if (!running) return;
+      clearInterval(interval);
+      interval = null;
+      running = false;
+      startBtn.textContent = 'Resume';
+      startBtn.style.display = 'inline-block';
+      pauseBtn.style.display = 'none';
+    }
+
+    function resetTimer() {
+      clearInterval(interval);
+      interval = null;
+      running = false;
+      remaining = 0;
+      document.body.classList.remove('done');
+      startBtn.textContent = 'Start';
+      startBtn.style.display = 'inline-block';
+      pauseBtn.style.display = 'none';
+      updateDisplayFromInputs();
+    }
+
+    document.getElementById('minutesInput').addEventListener('input', () => {
+      if (!running) { remaining = 0; updateDisplayFromInputs(); }
+    });
+    document.getElementById('secondsInput').addEventListener('input', () => {
+      if (!running) { remaining = 0; updateDisplayFromInputs(); }
+    });
+
+    updateDisplayFromInputs();
+  </script>
+</body>
+</html>
